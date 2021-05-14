@@ -38,6 +38,12 @@ class PortfolioController extends Controller
 
 
     public function update($id, Request $request){
+        $request->validate([
+	        'nom' => 'required|max:30',
+	        'image' => 'required',
+            'categorie' => 'required|max:50',
+	        'description' => 'required|max:255',
+	    ]);
        $portfolio = Portfolio::find($id);
        $portfolio->nom = $request->nom;
        Storage::disk('public')->delete('img/' . $portfolio->image);

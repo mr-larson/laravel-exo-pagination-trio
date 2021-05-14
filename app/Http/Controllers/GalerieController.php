@@ -37,6 +37,11 @@ class GalerieController extends Controller
 
 
     public function update($id, Request $request){
+        $request->validate([
+	        'nom' => 'required|max:30',
+	        'image' => 'required',
+	        'description' => 'required|max:255',
+	    ]);
        $galerie = Galerie::find($id);
        $galerie->nom = $request->nom;
        Storage::disk('public')->delete('img/' . $galerie->image);
