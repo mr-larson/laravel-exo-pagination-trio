@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     public function index(){
-        $service = Service::all();
+        $services = Service::paginate(3);
         $page = "service";
         $portfolios = Portfolio::all();
         $galeries = Galerie::all();
-        return view("backoffice.service.all",compact("service","page","portfolios","galeries"));       
+        return view("backoffice.service.all",compact("services","page","portfolios","galeries"));       
     }
 
 

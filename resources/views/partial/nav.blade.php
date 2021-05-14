@@ -16,6 +16,10 @@
                     <a class="nav-link {{ $page === "service" ? "active" : "" }}" href={{ route('service') }}>Service</a>
                 </li>
                 
+                <li class="nav-item">
+                    <a class="nav-link {{ $page === "caracteristique" ? "active" : "" }}" href={{ route('caracteristique') }}>Caracteristique</a>
+                </li>
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle {{ $page === "portfolio" ? "active" : "" }}"  data-bs-toggle="dropdown" href={{ route('portfolio') }}>portfolio</a>
                     <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">

@@ -5,9 +5,9 @@
         
     <section class="container mr-5">
         
-        <h1 class="text-center my-3">tableau des Services</h1>
+        <h1 class="text-center my-3">tableau des caracteristiques</h1>
         
-        <a class="btn btn-secondary text-white my-2" href="/service/create">Create</a>
+        <a class="btn btn-secondary text-white my-2" href="/caracteristique/create">Create</a>
         
         @if(session()->has('message'))
             <div class="alert alert-success">
@@ -20,21 +20,21 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">icone</th>
-                <th scope="col">titre</th>
-                <th scope="col">description</th>
+                <th scope="col">chiffre</th>
+                <th scope="col">nom</th>
                 <th scope="col">actions</th>
               </tr>
             </thead>
             <tbody class="col-6">
-                @foreach ($services as $service)
+                @foreach ($caracteristiques as $caracteristique)
                     <tr>
-                        <th scope="row">{{ $service->id }}</th>
-                        <td><i class="fas fa-2x	{{ $service->icone }}"></i></td>
-                        <td>{{ $service->titre }}</td>
-                        <td>{{ $service->description }}</td>
+                        <th scope="row">{{ $caracteristique->id }}</th>
+                        <td><i class="fas fa-2x	{{ $caracteristique->icone }}"></i></td>
+                        <td>{{ $caracteristique->chiffre }}</td>
+                        <td>{{ $caracteristique->nom }}</td>
                         <td class="d-flex">
-                            <a class="btn btn-primary text-white" href="/service/{{ $service->id }}/edit">Edit</a>
-                            <form action="/service/{{ $service->id }}/delete" method="POST">
+                            <a class="btn btn-primary text-white" href="/caracteristique/{{ $caracteristique->id }}/edit">Edit</a>
+                            <form action="/caracteristique/{{ $caracteristique->id }}/delete" method="POST">
                                 @csrf
                                 <button class="btn btn-danger text-white mx-2" type="submit">Delete</button>
                             </form>
@@ -43,10 +43,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div>
-            {{ $services->links() }}
-        </div>
-           
+        <div>{{ $caracteristiques->links() }}</div>   
     </section>
 
     @include('partial.footer')

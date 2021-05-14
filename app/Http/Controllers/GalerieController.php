@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class GalerieController extends Controller
 {
     public function index(){
-        $galeries = Galerie::all();
+        $galeries = Galerie::paginate(3);
         $page = "galerie";
         $portfolios = Portfolio::all();
 
@@ -81,7 +81,8 @@ class GalerieController extends Controller
     public function show($id){
         $galeries = Galerie::all();
         $galerie = Galerie::find($id);
+        $portfolios = Portfolio::all();
         $page = "galerie";
-        return view('backoffice.galerie.show',compact('galerie','galeries',"page"));
+        return view('backoffice.galerie.show',compact('galerie','galeries',"page", "portfolios"));
     }
 }

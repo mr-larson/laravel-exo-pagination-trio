@@ -29,7 +29,7 @@
               </tr>
             </thead>
             <tbody class="col-6">
-                @foreach ($user as $user)
+                @foreach ($users as $user)
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->nom }}</td>
@@ -55,7 +55,7 @@
                 @endforeach
             </tbody>
         </table>
-           
+        <div>{{ $users->links() }}</div>
     </section>
 
     @include('partial.footer')

@@ -50,7 +50,7 @@
                 @endforeach
             </tbody>
         </table>
-       {{--  <span>{{ $galeries->links() }}</span> --}}
+        <span>{{ $galeries->links() }}</span>
            
     </section>
 

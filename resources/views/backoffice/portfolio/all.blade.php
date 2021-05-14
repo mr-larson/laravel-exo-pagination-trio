@@ -52,7 +52,7 @@
                 @endforeach
             </tbody>
         </table>
-       {{--  <span>{{ $portfolios->links() }}</span> --}}
+        <div>{{ $portfolios->links() }}</div>
            
     </section>
 

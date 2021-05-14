@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GalerieController;
+use App\Http\Controllers\CaracteristiqueController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
@@ -51,6 +52,8 @@ Route::post("/user/store", [UserController::class, "store"]);
 Route::post("/user/{id}/download", [UserController::class, "download"]);
 
 
+
+
 //Service
 //ALL
 Route::get('/service', [ServiceController::class, "index"])->name("service");
@@ -74,7 +77,7 @@ Route::post("/service/store", [ServiceController::class, "store"]);
 
 //PORTFOLIO
 //ALL
-Route::get('/portfolio', [PortfolioController::class, "index"])->name("portfolio");
+Route::get('/portfolio', [portfolioController::class, "index"])->name("portfolio");
 
 //DELETE
 Route::post('/portfolio/{id}/delete', [PortfolioController::class, "destroy"]);
@@ -96,6 +99,8 @@ Route::post("/portfolio/{id}/download", [PortfolioController::class, "download"]
 
 //SHOW
 Route::get("/portfolio/{id}/show", [PortfolioController::class, "show"]);
+
+
 
 
 //Galerie
@@ -122,3 +127,32 @@ Route::post("/galerie/{id}/download", [GalerieController::class, "download"]);
 
 //SHOW
 Route::get("/galerie/{id}/show", [GalerieController::class, "show"]);
+
+
+
+
+
+//CARACTERISTIQUE
+//ALL
+Route::get('/caracteristique', [CaracteristiqueController::class, "index"])->name("caracteristique");
+
+//DELETE
+Route::post('/caracteristique/{id}/delete', [caracteristiqueController::class, "destroy"]);
+
+//EDIT
+Route::get("/caracteristique/{id}/edit",[caracteristiqueController::class, "edit"]);
+
+//UPDATE
+Route::post("/caracteristique/{id}/update",[caracteristiqueController::class, "update"]);
+
+//CREATE
+Route::get("caracteristique/create", [caracteristiqueController::class, "create"]);
+
+//STORE
+Route::post("/caracteristique/store", [caracteristiqueController::class, "store"]);
+
+//Download
+Route::post("/caracteristique/{id}/download", [caracteristiqueController::class, "download"]);
+
+//SHOW
+Route::get("/caracteristique/{id}/show", [caracteristiqueController::class, "show"]);

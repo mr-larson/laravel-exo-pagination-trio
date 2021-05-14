@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     public function index(){
-        $user = User::all();
+        $users = User::paginate(3);
         $page = "user";
         $portfolios = Portfolio::all();
         $galeries = Galerie::all();
 
-        return view("backoffice.user.all",compact("user","page","portfolios", "galeries"));       
+        return view("backoffice.user.all",compact("users","page","portfolios", "galeries"));       
     }
 
 
