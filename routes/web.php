@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +52,26 @@ Route::post("/user/store", [UserController::class, "store"]);
 
 //Download
 Route::post("/user/{id}/download", [UserController::class, "download"]);
+
+
+//Service
+//ALL
+Route::get('/service', [ServiceController::class, "index"])->name("service");
+
+//DELETE
+Route::post('/service/{id}/delete', [ServiceController::class, "destroy"]);
+
+//EDIT
+Route::get("/service/{id}/edit",[ServiceController::class, "edit"]);
+
+//UPDATE
+Route::post("/service/{id}/update",[ServiceController::class, "update"]);
+
+//CREATE
+Route::get("service/create", [ServiceController::class, "create"]);
+
+//STORE
+Route::post("/service/store", [ServiceController::class, "store"]);
+
+//Download
+Route::post("/user/{id}/download", [ServiceController::class, "download"]);
