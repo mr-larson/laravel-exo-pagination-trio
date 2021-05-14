@@ -14,7 +14,7 @@
             
         </ul>
 
-        <form method="POST" action="/caracteristique/{{ $caracteristique->id }}/update">
+        <form method="POST" action="/caracteristique/{{ $caracteristique->id }}/update" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label  class="form-label">icone</label>

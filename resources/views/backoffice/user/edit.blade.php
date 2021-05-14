@@ -14,7 +14,7 @@
             
         </ul>
 
-        <form method="POST" action="/user/{{ $user->id }}/update">
+        <form method="POST" action="/user/{{ $user->id }}/update"enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label  class="form-label">nom</label>
