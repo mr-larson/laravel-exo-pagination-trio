@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
+use App\Models\Portfolio;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $page="home";
-    return view('home', compact("page"));
+    $portfolios= Portfolio::all();
+    return view('home', compact("page","portfolios"));
 })->name("home");
 
 Route::get('/nav', function () {
@@ -51,3 +54,30 @@ Route::post("/user/store", [UserController::class, "store"]);
 
 //Download
 Route::post("/user/{id}/download", [UserController::class, "download"]);
+
+
+
+//PORTFOLIO
+//ALL
+Route::get('/portfolio', [PortfolioController::class, "index"])->name("portfolio");
+
+//DELETE
+Route::post('/portfolio/{id}/delete', [portfolioController::class, "destroy"]);
+
+//EDIT
+Route::get("/portfolio/{id}/edit",[portfolioController::class, "edit"]);
+
+//UPDATE
+Route::post("/portfolio/{id}/update",[portfolioController::class, "update"]);
+
+//CREATE
+Route::get("portfolio/create", [portfolioController::class, "create"]);
+
+//STORE
+Route::post("/portfolio/store", [portfolioController::class, "store"]);
+
+//Download
+Route::post("/portfolio/{id}/download", [portfolioController::class, "download"]);
+
+//SHOW
+Route::get("/portfolio/{id}/show", [portfolioController::class, "show"]);

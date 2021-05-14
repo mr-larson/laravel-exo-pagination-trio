@@ -12,17 +12,17 @@
                     <a class="nav-link {{ $page === "user" ? "active" : "" }}" href={{ route('user') }}>User</a>
                 </li>
                 
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ $page === "photo" ? "active" : "" }}"  data-bs-toggle="dropdown" href={{ route('photo') }}>Photo</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ $page === "portfolio" ? "active" : "" }}"  data-bs-toggle="dropdown" href={{ route('portfolio') }}>portfolio</a>
                     <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-secondary" href={{ route('photo') }}>photo</a></li>
+                        <li><a class="dropdown-item text-secondary" href={{ route('portfolio') }}>portfolio</a></li>
 
-                        @foreach ($photos as $photo)
-                            <li><a class="dropdown-item text-secondary" href="/photo/{{ $photo->id }}/show">{{ $photo->nom }}</a></li>
+                        @foreach ($portfolios as $portfolio)
+                            <li><a class="dropdown-item text-secondary" href="/portfolio/{{ $portfolio->id }}/show">{{ $portfolio->nom }}</a></li>
                         @endforeach
                         
                     </ul>
-                </li> --}}
+                </li>
                 
             </ul>
         </div>
