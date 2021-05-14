@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galerie;
 use App\Models\Portfolio;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,10 +12,11 @@ class UserController extends Controller
 {
     public function index(){
         $user = User::all();
-        $portfolios = Portfolio::all();
         $page = "user";
+        $portfolios = Portfolio::all();
+        $galeries = Galerie::all();
 
-        return view("backoffice.user.all",compact("user","page","portfolios"));       
+        return view("backoffice.user.all",compact("user","page","portfolios", "galeries"));       
     }
 
 
@@ -41,12 +43,13 @@ class UserController extends Controller
        $user->age = $request->age;   
        $user->email = $request->email;
        $user->password = $request->password;
-       $user->photo = $request->photo;
+       $user->photo = $request->file("photo")->hashName();
        $user->updated_at = now();   
 
        $user->save();
+       $request->file('photo')->storePublicly('img', 'public');
 
-       return redirect()->route("user");
+       return redirect()->route("user")->with('message', 'The success message!');;
     }
 
 
@@ -81,6 +84,6 @@ class UserController extends Controller
 
     public function download($id) {
         $user = User::find($id);
-        return Storage::disk("public")->download("img/" . $user->lien);
+        return Storage::disk("public")->download("img/" . $user->photo);
     }
 }

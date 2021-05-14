@@ -27,6 +27,18 @@
                         
                     </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ $page === "galerie" ? "active" : "" }}"  data-bs-toggle="dropdown" href={{ route('galerie') }}>galerie</a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-secondary" href={{ route('galerie') }}>galerie</a></li>
+
+                        @foreach ($galeries as $galerie)
+                            <li><a class="dropdown-item text-secondary" href="/galerie/{{ $galerie->id }}/show">{{ $galerie->nom }}</a></li>
+                        @endforeach
+                        
+                    </ul>
+                </li>
                 
             </ul>
         </div>

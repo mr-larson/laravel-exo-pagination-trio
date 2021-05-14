@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galerie;
 use App\Models\Portfolio;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class ServiceController extends Controller
         $service = Service::all();
         $page = "service";
         $portfolios = Portfolio::all();
-        return view("backoffice.service.all",compact("service","page","portfolios"));       
+        $galeries = Galerie::all();
+        return view("backoffice.service.all",compact("service","page","portfolios","galeries"));       
     }
 
 

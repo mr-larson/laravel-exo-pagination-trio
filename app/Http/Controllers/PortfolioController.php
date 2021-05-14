@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galerie;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,8 +13,9 @@ class PortfolioController extends Controller
     public function index(){
         $portfolios = Portfolio::all();
         $page = "portfolio";
+        $galeries = Galerie::all();
 
-        return view("backoffice.portfolio.all",compact("page", "portfolios"));
+        return view("backoffice.portfolio.all",compact("page", "portfolios", "galeries"));
             
     }
 
@@ -46,7 +48,7 @@ class PortfolioController extends Controller
 
        $portfolio->save();
        $request->file('image')->storePublicly('img', 'public'); 
-       return redirect()->route("portfolio");
+       return redirect()->route("portfolio")->with('message', 'The success message!');;
     }
 
 

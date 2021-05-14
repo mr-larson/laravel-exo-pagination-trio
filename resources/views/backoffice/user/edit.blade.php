@@ -38,7 +38,7 @@
             </div>
             <div class="mb-3">
                 <label  class="form-label">photo</label>
-                <input type="text" class="form-control" value="{{ $user->photo }}" name="photo">
+                <input type="file" class="form-control" value="{{ $user->photo }}" name="photo">
             </div>
             <button type="submit" class="btn btn-secondary text-white my-3">Submit</button>
         </form>

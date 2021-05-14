@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
+use App\Models\Galerie;
 use App\Models\Portfolio;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $page="home";
     $portfolios= Portfolio::all();
-    return view('home', compact("page","portfolios"));
+    $galeries= Galerie::all();
+    return view('home', compact("page","portfolios","galeries"));
 })->name("home");
 
 
@@ -67,30 +70,55 @@ Route::get("service/create", [ServiceController::class, "create"]);
 //STORE
 Route::post("/service/store", [ServiceController::class, "store"]);
 
-//Download
-Route::post("/user/{id}/download", [ServiceController::class, "download"]);
+
 
 //PORTFOLIO
 //ALL
 Route::get('/portfolio', [PortfolioController::class, "index"])->name("portfolio");
 
 //DELETE
-Route::post('/portfolio/{id}/delete', [portfolioController::class, "destroy"]);
+Route::post('/portfolio/{id}/delete', [PortfolioController::class, "destroy"]);
 
 //EDIT
-Route::get("/portfolio/{id}/edit",[portfolioController::class, "edit"]);
+Route::get("/portfolio/{id}/edit",[PortfolioController::class, "edit"]);
 
 //UPDATE
-Route::post("/portfolio/{id}/update",[portfolioController::class, "update"]);
+Route::post("/portfolio/{id}/update",[PortfolioController::class, "update"]);
 
 //CREATE
-Route::get("portfolio/create", [portfolioController::class, "create"]);
+Route::get("portfolio/create", [PortfolioController::class, "create"]);
 
 //STORE
 Route::post("/portfolio/store", [PortfolioController::class, "store"]);
 
 //Download
-Route::post("/portfolio/{id}/download", [portfolioController::class, "download"]);
+Route::post("/portfolio/{id}/download", [PortfolioController::class, "download"]);
 
 //SHOW
-Route::get("/portfolio/{id}/show", [portfolioController::class, "show"]);
+Route::get("/portfolio/{id}/show", [PortfolioController::class, "show"]);
+
+
+//Galerie
+//ALL
+Route::get('/galerie', [GalerieController::class, "index"])->name("galerie");
+
+//DELETE
+Route::post('/galerie/{id}/delete', [GalerieController::class, "destroy"]);
+
+//EDIT
+Route::get("/galerie/{id}/edit",[GalerieController::class, "edit"]);
+
+//UPDATE
+Route::post("/galerie/{id}/update",[GalerieController::class, "update"]);
+
+//CREATE
+Route::get("galerie/create", [GalerieController::class, "create"]);
+
+//STORE
+Route::post("/galerie/store", [GalerieController::class, "store"]);
+
+//Download
+Route::post("/galerie/{id}/download", [GalerieController::class, "download"]);
+
+//SHOW
+Route::get("/galerie/{id}/show", [GalerieController::class, "show"]);
