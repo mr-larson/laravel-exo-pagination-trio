@@ -38,16 +38,18 @@
                         <td>{{ $user->email }}</td>
                         <td class="w-25">{{ $user->password }}</td>
                         <td><img class="img-thumbnail col-4" src={{ asset("img/" . $user->photo) }} alt=""></td>
-                        <td class="d-flex">
-                            <form action="/user/{{ $user->id }}/download" method="POST">
-                                @csrf
-                                <button class="btn btn-warning text-white mx-2" type="submit">Download</button>
-                            </form>
-                            <a class="btn btn-primary text-white" href="/user/{{ $user->id }}/edit">Edit</a>
-                            <form action="/user/{{ $user->id }}/delete" method="POST">
-                                @csrf
-                                <button class="btn btn-danger text-white mx-2" type="submit">Delete</button>
-                            </form>
+                        <td>
+                            <div class="d-flex">
+                                <form action="/user/{{ $user->id }}/download" method="POST">
+                                    @csrf
+                                    <button class="btn btn-warning text-white mx-2" type="submit">Download</button>
+                                </form>
+                                <a class="btn btn-primary text-white" href="/user/{{ $user->id }}/edit">Edit</a>
+                                <form action="/user/{{ $user->id }}/delete" method="POST">
+                                    @csrf
+                                    <button class="btn btn-danger text-white mx-2" type="submit">Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

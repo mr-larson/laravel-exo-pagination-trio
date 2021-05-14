@@ -22,15 +22,6 @@ Route::get('/', function () {
     return view('home', compact("page","portfolios"));
 })->name("home");
 
-Route::get('/nav', function () {
-    
-    return view('nav');
-})->name("nav");
-
-Route::get('/footer', function () {
-    
-    return view('footer');
-})->name("footer");
 
 
 //User
@@ -74,7 +65,7 @@ Route::post("/portfolio/{id}/update",[portfolioController::class, "update"]);
 Route::get("portfolio/create", [portfolioController::class, "create"]);
 
 //STORE
-Route::post("/portfolio/store", [portfolioController::class, "store"]);
+Route::post("/portfolio/store", [PortfolioController::class, "store"]);
 
 //Download
 Route::post("/portfolio/{id}/download", [portfolioController::class, "download"]);

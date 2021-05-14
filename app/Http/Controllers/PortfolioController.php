@@ -20,6 +20,7 @@ class PortfolioController extends Controller
 
     public function destroy($id){
         $portfolio = Portfolio::find($id);
+        Storage::disk('public')->delete('img/' . $portfolio->image);
         $portfolio->delete();
 
         return redirect()->back();       
@@ -37,13 +38,14 @@ class PortfolioController extends Controller
     public function update($id, Request $request){
        $portfolio = Portfolio::find($id);
        $portfolio->nom = $request->nom;
-       $portfolio->lien = $request->lien;
+       Storage::disk('public')->delete('img/' . $portfolio->image);
+       $portfolio->image = $request->file("image")->hashName();
        $portfolio->categorie = $request->categorie;
        $portfolio->description = $request->description;    
        $portfolio->updated_at = now();   
 
        $portfolio->save();
-
+       $request->file('image')->storePublicly('img', 'public'); 
        return redirect()->route("portfolio");
     }
 
@@ -57,19 +59,19 @@ class PortfolioController extends Controller
     public function store(Request $request){
         $request->validate([
 	        'nom' => 'required|max:30',
-	        'lien' => 'required',
+	        'image' => 'required',
             'categorie' => 'required|max:50',
 	        'description' => 'required|max:255',
 	    ]);
         $portfolio = new portfolio;
         $portfolio->nom = $request->nom;
-        $portfolio->lien = $request->file("lien")->hashName();
+        $portfolio->image = $request->file("image")->hashName();
         $portfolio->categorie = $request->categorie;
         $portfolio->description = $request->description;
         $portfolio->created_at = now();   
  
         $portfolio->save();
-        $request->file('lien')->storePublicly('img', 'public');
+        $request->file('image')->storePublicly('img', 'public');
         return redirect()->route('portfolio')->with('message', 'The success message!');
     }
 

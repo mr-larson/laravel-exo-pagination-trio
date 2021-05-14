@@ -5,7 +5,7 @@
         
     <section class="container mr-5">
         
-        <h1 class="text-center my-3">tableau de Portfolio</h1>
+        <h1 class="text-center my-3">tableau de Portfolios</h1>
         
         <a class="btn btn-secondary text-white my-2" href="/portfolio/create">Create</a>
 
@@ -36,7 +36,7 @@
                         <td>{{ $portfolio->categorie }}</td>
                         <td>{{ $portfolio->description }}</td>
                         <td>
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex">
                                 <form action="/portfolio/{{ $portfolio->id }}/download" method="POST">
                                     @csrf
                                     <button class="btn btn-warning text-white mx-2" type="submit">Download</button>
@@ -51,8 +51,6 @@
                     </tr>
                 @endforeach
             </tbody>
-
-            
         </table>
        {{--  <span>{{ $portfolios->links() }}</span> --}}
            

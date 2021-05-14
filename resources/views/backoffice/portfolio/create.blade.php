@@ -14,15 +14,15 @@
         
         </ul>
 
-        <form method="POST" action="/photo/store" enctype="multipart/form-data">
+        <form method="POST" action="/portfolio/store" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label class="form-label">Nom</label>
                 <input type="text" class="form-control" name="nom">
             </div>
             <div class="mb-3">
-                <label  class="form-label">lien</label> 
-                <input type="file" class="form-control" name="lien">
+                <label  class="form-label">image</label> 
+                <input type="file" class="form-control" name="image">
             </div>
             <div class="mb-3">
                 <label class="form-label">categorie</label>
