@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     public function index(){
-        $service = Service::all();
+        $services = Service::all();
         $page = "service";
         $portfolios = Portfolio::all();
         return view("backoffice.service.all",compact("service","page","portfolios"));       

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaracteristiqueController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
@@ -72,7 +73,7 @@ Route::post("/user/{id}/download", [ServiceController::class, "download"]);
 
 //PORTFOLIO
 //ALL
-Route::get('/portfolio', [PortfolioController::class, "index"])->name("portfolio");
+Route::get('/portfolio', [portfolioController::class, "index"])->name("portfolio");
 
 //DELETE
 Route::post('/portfolio/{id}/delete', [portfolioController::class, "destroy"]);
@@ -94,3 +95,28 @@ Route::post("/portfolio/{id}/download", [portfolioController::class, "download"]
 
 //SHOW
 Route::get("/portfolio/{id}/show", [portfolioController::class, "show"]);
+
+//CARACTERISTIQUE
+//ALL
+Route::get('/caracteristique', [CaracteristiqueController::class, "index"])->name("caracteristique");
+
+//DELETE
+Route::post('/caracteristique/{id}/delete', [caracteristiqueController::class, "destroy"]);
+
+//EDIT
+Route::get("/caracteristique/{id}/edit",[caracteristiqueController::class, "edit"]);
+
+//UPDATE
+Route::post("/caracteristique/{id}/update",[caracteristiqueController::class, "update"]);
+
+//CREATE
+Route::get("caracteristique/create", [caracteristiqueController::class, "create"]);
+
+//STORE
+Route::post("/caracteristique/store", [caracteristiqueController::class, "store"]);
+
+//Download
+Route::post("/caracteristique/{id}/download", [caracteristiqueController::class, "download"]);
+
+//SHOW
+Route::get("/caracteristique/{id}/show", [caracteristiqueController::class, "show"]);
