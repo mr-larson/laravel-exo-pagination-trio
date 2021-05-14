@@ -26,7 +26,7 @@
               </tr>
             </thead>
             <tbody class="col-6">
-                @foreach ($service as $service)
+                @foreach ($services as $service)
                     <tr>
                         <th scope="row">{{ $service->id }}</th>
                         <td><i class="fas fa-2x	{{ $service->icone }}"></i></td>
@@ -43,6 +43,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div>
+            {{ $services->links() }}
+        </div>
            
     </section>
 
