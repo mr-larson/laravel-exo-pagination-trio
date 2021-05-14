@@ -22,7 +22,7 @@
                 <option value="fa-taxi">Taxi</option>
                 <option value="fa-hospital">Hopital</option>
                 <option value="fa-cut">Coiffeur</option>
-                <option value="fa-extinguisher">Pompier</option>
+                <option value="fa-fire-extinguisher">Pompier</option>
             </select>
         </div>
         <div class="mb-3">

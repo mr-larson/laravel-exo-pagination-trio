@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class ServiceController extends Controller
     public function index(){
         $service = Service::all();
         $page = "service";
-        return view("backoffice.service.all",compact("service","page"));       
+        $portfolios = Portfolio::all();
+        return view("backoffice.service.all",compact("service","page","portfolios"));       
     }
 
 
